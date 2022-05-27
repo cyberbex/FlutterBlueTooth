@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import './BluetoothDeviceListEntry.dart';
 
-import 'Calibrar.dart';
-
 class ChatPage extends StatefulWidget {
   final BluetoothDevice server;
 
@@ -114,12 +112,28 @@ class _ChatPage extends State<ChatPage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
+                    _sendMessage("calibrar");
+
                     //Navigator.push(context, MaterialPageRoute(),
                     //Navigator.of(context).pop(result.device);
                   },
                   child: Text("Calibrar"),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    _sendMessage("tara");
+                    //Navigator.push(context, MaterialPageRoute(),
+                    //Navigator.of(context).pop(result.device);
+                  },
+                  child: Text("Tara"),
+                ),
               ],
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              onSubmitted: (String texto) {
+                _sendMessage(texto);
+              },
             ),
           ],
         ),
@@ -163,7 +177,7 @@ class _ChatPage extends State<ChatPage> {
 
     if (text.length > 0) {
       try {
-        connection.output.add(utf8.encode(text + "\r\n"));
+        connection.output.add(utf8.encode(text));
         await connection.output.allSent;
 
         //setState(() {
