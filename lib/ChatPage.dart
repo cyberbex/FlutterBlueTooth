@@ -117,7 +117,7 @@ class _ChatPage extends State<ChatPage> {
                     //Navigator.push(context, MaterialPageRoute(),
                     //Navigator.of(context).pop(result.device);
                   },
-                  child: Text("Calibrarhfghfghfg"),
+                  child: Text("Calibrar"),
                 ),
               ],
             ),
